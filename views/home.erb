@@ -6,7 +6,30 @@
 
 <% messages.each do |message| %>
 
-  <li><%= message["message"] %></li>
+    <b>Message:</b>
+    <li><%= message["message"] %></li>
+    <form action="/edit/<%= message["id"] %>" method="get">
+      <input type="submit" value="edit"/>
+    </form>
+    <form action="/delete/<%= message["id"] %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete"/>
+    </form>
+    <form action="/comment/<%= message["id"] %>" method="get">
+      <input type="submit" value="Comment"/>
+    </form>
+    <form action="/like/<%= message["id"] %>" method="post">
+      <input type="submit" value="Like"/>
+    </form>
+    <p> Number of likes: <%=message["like_num"]%></p>
 
+    <% if comments.length > 0 %>
+       <p>Comments:</p>
+    <% end %>
+    <% comments.each do |commento| %>
+        <p><%= commento["comment"] if commento["message_id"] == message["id"] %></p>
+    <% end %>
 <% end %>
+
+
 
