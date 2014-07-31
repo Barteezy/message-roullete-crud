@@ -1,0 +1,15 @@
+<h3>Add a comment to: <%=message["message"]%></h3>
+
+<form action="/comment/<%=message["id"]%>" method="post">
+
+<label for="comment">Comment</label>
+<ul>
+  <li>
+    <input type="text" name="comment"/>
+  </li>
+  <li>
+    <input type="submit" value="Add Comment"
+  </li>
+</ul>
+
+</form>
